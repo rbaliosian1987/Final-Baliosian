@@ -29,17 +29,6 @@ h1 {
     border: $color $grosor solid;
 }
 
-.btn-outline-success {
-    @extend .primario;
-    @include out-line($primario, 1px);
-    transition: all ease .3s;
-
-    &:hover {
-        background-color: $primario;
-        color: $light;
-    }
-}
-
 @mixin sombra($color, $lado1: 5px, $lado2: 0px, $difuminado: 0px) {
     box-shadow: $color $lado1 $lado2 $difuminado;
 }
@@ -152,22 +141,116 @@ h1 {
     }
 }
 
-form{
+form {
     padding: .6rem;
 }
 
-.acciones{
 
-    .fa-trash{
-        color: $cancelado;
-        margin-left: 2rem;
+
+
+@media (max-width:668px) {
+    #alertDisplay {
+        opacity: 1;
+        display: block;
+    }
+}
+
+#charger {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: block;
+    position: fixed;
+}
+
+
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+    border-top: 10px solid #333;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bordered {
+    border-radius: 2rem;
+}
+
+
+.acciones > span {
+    @extend .bordered;
+    margin: 0 .5rem;
+
+    color: rgba($color: $secundario, $alpha: .5);
+    &:hover {
+        color: rgba($color: $secundario, $alpha: 1.0);
     }
 }
 
 
-@media (max-width:668px){
-    #alertDisplay{
-        opacity: 1;
-        display: block;
+//personalización de Bootstrap
+
+.btn-outline-success {
+    @extend .primario;
+    @include out-line($secundario, 1px);
+    transition: all ease .3s;
+
+    &:hover {
+        background-color: $secundario;
+        color: $light;
     }
+}
+
+.carousel {
+    margin: .5rem;
+
+    .fa-solid {
+        color: $light;
+        font-size: 3rem;
+    }
+}
+
+.nav-item {
+    @extend .bordered;
+    background-color: $cuidado;
+    margin: .5rem;
+    padding: 0 .5rem;
+}
+
+.form-control,
+.btn {
+    @extend .bordered;
+}
+
+.dropdown-item {
+    transition: all .3s;
+
+    &:hover {
+        background-color: $cuidado;
+        margin-left: .5rem;
+        @extend .bordered;
+    }
+}
+
+
+thead {
+    background-color: $secundario;
+    color: $light;
+}
+
+tbody>tr {
+    background-color: $light;
 }
